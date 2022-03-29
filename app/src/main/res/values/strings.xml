@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MsgShareApp</string>
+    <string name="send_message">Send Message</string>
+    <string name="share_data">Share data</string>
+    <string name="recyclerview_demo">Recyclerview demo</string>
+    <string name="enter_your_message">Enter your message</string>
 </resources>

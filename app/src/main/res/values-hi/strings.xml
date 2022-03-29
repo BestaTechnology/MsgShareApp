@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--if phone setting changes to another language like Hindi
+    then our application will also reflect these changes automatically to his local language-->
+    <string name="app_name">MsgShareApp</string>
+    <string name="send_message">मेसेज भेजें</string>
+    <string name="share_data">डेटा साझा करें</string>
+    <string name="recyclerview_demo">रीसाइक्लरव्यू डेमो</string>
+    <string name="enter_your_message">अपना संदेश दर्ज करें</string>
+</resources>

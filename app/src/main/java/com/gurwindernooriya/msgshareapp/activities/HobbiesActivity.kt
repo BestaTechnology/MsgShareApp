@@ -10,19 +10,25 @@ import com.gurwindernooriya.msgshareapp.adapters.HobbiesAdapter
 import com.gurwindernooriya.msgshareapp.dataclasses.Supplier
 
 class HobbiesActivity : AppCompatActivity() {
+
+    companion object{
+        val TAG:String=HobbiesActivity::class.java.simpleName
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hobbies)
 
 
+        setRecyclerview()
 
+    }
+
+    private fun setRecyclerview() {
         val recyclerview =findViewById<RecyclerView>(R.id.recycler_hobbies)
         val linearlayout = LinearLayoutManager(this)
         linearlayout.orientation=LinearLayoutManager.VERTICAL
         recyclerview.layoutManager=linearlayout
-         val  adapter =HobbiesAdapter(this, Supplier.hobbies)
+        val  adapter =HobbiesAdapter(this, Supplier.hobbies)
         recyclerview.adapter=adapter
-
-
     }
 }

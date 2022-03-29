@@ -4,42 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:background="@color/black"
     tools:context=".activities.MainActivity">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your message"
-        android:gravity="center_horizontal"
-        android:layout_centerInParent="true"
-        android:id="@+id/et_msg"
-        />
 
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="StandalonToolbar"
+        android:layout_marginTop="100dp"
+        android:onClick="showmessage"
+        android:textColor="@android:color/white" />
+
+    <Button
         android:id="@+id/sendbtn"
-        android:layout_marginTop="50dp"
-        android:layout_centerInParent="true"
-        android:text="Send Message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/et_msg"
-        android:gravity="center"/>
-
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/send_message" />
 
     <Button
+        android:id="@+id/share_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Share data"
-        android:layout_centerInParent="true"
         android:layout_below="@id/sendbtn"
-        android:id="@+id/share_btn"/>
+        android:layout_centerInParent="true"
+        android:text="@string/share_data" />
+
+
     <Button
+        android:id="@+id/recycler_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recyclerview demo"
-        android:layout_centerInParent="true"
         android:layout_below="@id/share_btn"
-        android:id="@+id/recycler_btn"/>
+        android:layout_centerInParent="true"
+        android:text="@string/recyclerview_demo" />
+
+    <EditText
+        android:id="@+id/et_msg"
+        android:layout_width="match_parent"
+        android:textSize="30sp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:hint="@string/enter_your_message" />
 
 </RelativeLayout>

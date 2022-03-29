@@ -7,14 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.gurwindernooriya.msgshareapp.R
+import com.gurwindernooriya.msgshareapp.activities.SecondActivity
 import com.gurwindernooriya.msgshareapp.dataclasses.Hobby
-import com.gurwindernooriya.msgshareapp.dataclasses.Supplier.hobbies
+import com.gurwindernooriya.msgshareapp.extensions.showToast
 
-class HobbiesAdapter (val context :Context,val hobbylist:List<Hobby>): RecyclerView.Adapter<HobbiesAdapter.ViewHolder>() {
-
+class HobbiesAdapter (val context :Context, private val hobbyist:List<Hobby>): RecyclerView.Adapter<HobbiesAdapter.ViewHolder>() {
+    companion object{
+        val TAG:String= HobbiesAdapter::class.java.simpleName
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HobbiesAdapter.ViewHolder {
@@ -23,49 +25,47 @@ class HobbiesAdapter (val context :Context,val hobbylist:List<Hobby>): RecyclerV
     }
 
     override fun onBindViewHolder(holder: HobbiesAdapter.ViewHolder, position: Int) {
-        val hobbies =hobbylist.get(position)
+        val hobbies = hobbyist[position]
         holder.setData(hobbies,position)
-        
-
 
     }
-
-
 
     override fun getItemCount(): Int {
-        return hobbylist.size
+            return hobbyist.size
+
     }
 
-    inner  class ViewHolder(itemview: View): RecyclerView.ViewHolder(itemview) {
+    inner  class ViewHolder(interview: View): RecyclerView.ViewHolder(interview) {
 
-        val textview = itemview.findViewById<TextView>(R.id.title_tv)
-        val sharebtn = itemview.findViewById<ImageView>(R.id.image_iv)
+        private val textview = interview.findViewById<TextView>(R.id.title_tv)
+        private val share = interview.findViewById<ImageView>(R.id.image_iv)
 
-        var currenthobby:Hobby?=null
-        var currentposition:Int=0
-
-
-
+        private var currentHobby:Hobby?=null
+        private var currentPosition:Int=0
 
         init {
             textview.setOnClickListener {
-                Toast.makeText(context, currenthobby!!.title +"is clicked on position"+currentposition,Toast.LENGTH_SHORT).show()
+                currentHobby?.let {
+                    context.showToast(currentHobby!!.title +"is clicked on position"+currentPosition) }
             }
 
-            sharebtn.setOnClickListener {
+            share.setOnClickListener {
                 val intent = Intent()
                 intent.action=Intent.ACTION_SEND
-                intent.setType("text/plain")
-                intent.putExtra(Intent.EXTRA_TEXT, currenthobby?.title)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_TEXT, currentHobby?.title)
                 context.startActivity(Intent.createChooser(intent,"Share Hobby"))
             }
 
         }
 
         fun  setData(hobby: Hobby?, position: Int){
-            textview.setText(hobby!!.title)
-            this.currenthobby=hobby
-            this.currentposition=position
+            hobby?.let {
+                textview.text = hobby.title
+                this.currentHobby=hobby
+                this.currentPosition=position
+            }
+
         }
     }
 
