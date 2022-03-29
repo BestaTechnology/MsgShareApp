@@ -17,4 +17,15 @@
         <item name="colorControlActivated">#4CAF50</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="mytoolbar_theme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+
+    </style>
+
+    <style name="mypopuptheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">@color/overflowback</item>
+        <item name="android:textColorPrimary">@color/purple_700</item>
+    </style>
 </resources>
